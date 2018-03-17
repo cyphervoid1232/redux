@@ -1,0 +1,39 @@
+<html>
+
+    <head>
+        <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+        
+    </head>
+    <body>
+
+       <div id="output">
+
+       </div>
+       <script>
+           var initialState = {val : 0}
+           var reducer = (state = initialState, action) => {
+            
+               if(action.type == 'INCREMENT'){
+                   
+                   return {val : state.val + action.by}
+               }
+               return state;
+           } 
+
+           var incAction = (by = 1) => ({type: 'INCREMENT', by})
+
+            var store = Redux.createStore(reducer)
+            function render(){
+                document.getElementById("output").innerHTML = "" + store.getState().val
+            }   
+            render()
+
+            store.subscribe(render)
+           
+            store.dispatch(incAction())
+            store.dispatch(incAction(2))
+        </script>
+           
+    </body>
+
+</html>
