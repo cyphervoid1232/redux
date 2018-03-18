@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import TodoList from '../components/TodoList'
 import {connect} from 'react-redux'
-import { addTodo } from '../actions/index';
+import { addTodo, setVisibilityFilter } from '../actions/index';
 
 class AddTodo extends Component {
     submitTodo = (e) => {
@@ -18,13 +18,15 @@ class AddTodo extends Component {
                     <input ref = {node => this.input = node}/>
                     <button type="submit">Add</button>
                 </form>
+                {/* <button onClick={this.props.click}>all</button> */}
             </div>
         )
     }
 }
 
 const mapDispatchToProps = (dispatch) =>( {
-    addTodo : (text) => dispatch(addTodo(text))
+    addTodo : (text) => dispatch(addTodo(text)) 
+    // click : () => dispatch(setVisibilityFilter('SHOW_ALL'))
 })
 
 export default connect(null,mapDispatchToProps)(AddTodo);
