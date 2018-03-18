@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 const Todo = ({text, toggleTodo, completed, id, deleteTodo}) => (
     <div>
